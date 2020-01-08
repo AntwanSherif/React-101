@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
-const Welcome = () => <h1>Hello World!</h1>;
+const Welcome = ({ name }) => <h1>Hello {name}!</h1>;
 
-const element = <Welcome />;
+const element = <Welcome name='Antwan' />;
 // console.log(element);
 
 ReactDOM.render(element, document.getElementById('root'));
