@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 
 const styles = {
     wrapper: {
@@ -27,24 +27,36 @@ const styles = {
         height: 30,
         fontSize: 16,
         outline: 0
+    },
+    removeButton: {
+        margin: 5,
+        width: 80,
+        height: 30,
+        fontSize: 16,
+        outline: 0,
+        backgroundColor: 'red',
+        color: 'white'
     }
 }
 
 export default function BasketItem() {
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState(1);
 
     const increase = () => setValue(prevValue => prevValue + 1);
     const decrease = () => setValue(prevValue => prevValue - 1);
+    const remove  = () => console.log('Remove item');
 
     return (
         <div style={styles.wrapper}>
             <div style={styles.imageContainer}>
                 <img src='https://cataas.com/cat/meme' alt='item name' style={styles.image} />
             </div>
-            
-            <span style={styles.value}>{value}</span>
 
-            <button style={styles.button} onClick={decrease}>-</button>
+            <span style={styles.value}>{value}</span>
+            
+            {value > 1 && <button style={styles.button} onClick={decrease}>-</button>}
+            {value <= 1 && <button style={styles.removeButton} onClick={remove}>Remove</button>}
+            
             <button style={styles.button} onClick={increase}>+</button>
         </div>
     )
