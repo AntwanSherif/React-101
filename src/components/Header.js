@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Counter from './common/Counter';
 
 const styles = {
@@ -8,7 +9,6 @@ const styles = {
         marginBottom: 40,
         backgroundColor: '#44d1ff',
         fontSize: 20,
-        textAlign: 'right',
         boxShadow: 'rgba(0, 0, 0, 0.75) 0px -5px 15px 0px'
     }
 };
@@ -16,8 +16,13 @@ const styles = {
 export default function Header({ counterValue }) {
     return (
         <div style={styles.header}>
-            <span>اعتبروه لوجو</span>
-            <Counter value={counterValue} style={{ backgroundColor: 'yellow', borderRadius: 30, fontSize: 12 }} />
+            <Link to='/' style={{float: 'left', textDecoration: 'none' }}>
+                اعتبروه لوجو
+            </Link>
+
+            <Link to='/basket' style={{float: 'right', textDecoration: 'none' }}>
+                <Counter value={counterValue} style={{ backgroundColor: 'yellow', borderRadius: 30, fontSize: 12, textAlign: 'right', }} />
+            </Link>
         </div>
     )
 }

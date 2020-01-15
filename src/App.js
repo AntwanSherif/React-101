@@ -1,4 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Routes from './Routes';
 import BasketContainer from './components/BasketContainer';
 import Header from './components/Header';
 
@@ -14,7 +16,6 @@ const basketItems = [
 
 function App() {
   const [items, setItems] = useState(basketItems);
-  // const [total, setTotal] = useState(0);
 
   const handleIncrement = useCallback(
     itemId => setItems(prevItems => {
@@ -67,8 +68,13 @@ function App() {
 
   return (
     <div className='App'>
-      <Header counterValue={total} />
-      <BasketContainer items={items} onIncrement={handleIncrement} onDecrement={handleDecrement} onDelete={handleDelete} />
+      {/**
+        <BasketContainer items={items} onIncrement={handleIncrement} onDecrement={handleDecrement} onDelete={handleDelete} />
+      */}
+      <Router>
+        <Header counterValue={total} />
+        <Routes />
+      </Router>
     </div>
   );
 }
