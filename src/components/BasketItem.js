@@ -39,12 +39,13 @@ const styles = {
     }
 }
 
-export default function BasketItem({ id, value: initialValue, imgSrc }) {
+export default function BasketItem(props) {
+    const { id, value: initialValue, imgSrc, onDelete } = props;
+
     const [value, setValue] = useState(initialValue);
 
     const increase = () => setValue(prevValue => prevValue + 1);
     const decrease = () => setValue(prevValue => prevValue - 1);
-    const remove  = () => console.log('Remove item');
 
     return (
         <div style={styles.wrapper}>
@@ -55,7 +56,14 @@ export default function BasketItem({ id, value: initialValue, imgSrc }) {
             <span style={styles.value}>{value}</span>
             
             {value > 1 && <button style={styles.button} onClick={decrease}>-</button>}
-            {value <= 1 && <button style={styles.removeButton} onClick={remove}>Remove</button>}
+            {value <= 1 && (
+                <button 
+                    style={styles.removeButton} 
+                    onClick={() => onDelete(id)}
+                >
+                    Remove
+                </button>
+            )}
             
             <button style={styles.button} onClick={increase}>+</button>
         </div>
