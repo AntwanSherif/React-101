@@ -1,4 +1,5 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
+import Counter from './common/Counter';
 
 const styles = {
     wrapper: {
@@ -14,12 +15,6 @@ const styles = {
     image: {
         width: 28,
         height: 28
-    },
-    value: {
-        padding: '5px 10px',
-        margin: 20,
-        width: 30,
-        backgroundColor: 'lightBlue'
     },
     button: {
         margin: 5,
@@ -53,7 +48,7 @@ export default function BasketItem(props) {
                 <img src={imgSrc} alt='item name' style={styles.image} />
             </div>
 
-            <span style={styles.value}>{value}</span>
+            <Counter value={value} />
             
             {value > 1 && <button style={styles.button} onClick={decrease}>-</button>}
             {value <= 1 && (
