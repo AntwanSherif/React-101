@@ -13,11 +13,11 @@ const styles = {
     }
 };
 
-export default function Header() {
+export default function Header({ counterValue }) {
     return (
         <div style={styles.header}>
             <span>اعتبروه لوجو</span>
-            <Counter value={0} style={{ backgroundColor: 'yellow', borderRadius: 30, fontSize: 12 }} />
+            <Counter value={counterValue} style={{ backgroundColor: 'yellow', borderRadius: 30, fontSize: 12 }} />
         </div>
     )
 }
