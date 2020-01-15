@@ -1,10 +1,10 @@
 import React from 'react';
-import BasketItem from './components/BasketItem';
+import BasketContainer from './components/BasketContainer';
 
 function App() {
   return (
     <div className='App'>
-      <BasketItem />
+      <BasketContainer />
     </div>
   );
 }

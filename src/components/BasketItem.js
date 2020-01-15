@@ -39,8 +39,8 @@ const styles = {
     }
 }
 
-export default function BasketItem() {
-    const [value, setValue] = useState(1);
+export default function BasketItem({ id, value: initialValue, imgSrc }) {
+    const [value, setValue] = useState(initialValue);
 
     const increase = () => setValue(prevValue => prevValue + 1);
     const decrease = () => setValue(prevValue => prevValue - 1);
@@ -49,7 +49,7 @@ export default function BasketItem() {
     return (
         <div style={styles.wrapper}>
             <div style={styles.imageContainer}>
-                <img src='https://cataas.com/cat/meme' alt='item name' style={styles.image} />
+                <img src={imgSrc} alt='item name' style={styles.image} />
             </div>
 
             <span style={styles.value}>{value}</span>
