@@ -4,7 +4,7 @@ import BasketContainer from '../components/BasketContainer'
 export default function BasketPage() {
     return (
         <div>
-            <h2>Basket</h2>
+            <h1 style={{ textAlign: 'center' }}>Basket</h1>
             <BasketContainer />
         </div>
     )

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { createContext, useState, useCallback, useMemo } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './Routes';
 import BasketContainer from './components/BasketContainer';
@@ -13,6 +13,8 @@ const basketItems = [
   { id: 80, value: 1, imgSrc: 'https://cataas.com/cat/fun' },
   { id: 90, value: 1, imgSrc: 'https://cataas.com/cat/meme' },
 ];
+
+export const BasketItemsContext = createContext([]);
 
 function App() {
   const [items, setItems] = useState(basketItems);
@@ -64,17 +66,23 @@ function App() {
     [items]
   );
 
-
-
   return (
     <div className='App'>
       {/**
         <BasketContainer items={items} onIncrement={handleIncrement} onDecrement={handleDecrement} onDelete={handleDelete} />
       */}
-      <Router>
-        <Header counterValue={total} />
-        <Routes />
-      </Router>
+      <BasketItemsContext.Provider value={{
+        items,
+        onIncrement: handleIncrement,
+        onDecrement: handleDecrement,
+        onDelete: handleDelete
+      }}
+      >
+        <Router>
+          <Header counterValue={total} />
+          <Routes />
+        </Router>
+      </BasketItemsContext.Provider>
     </div>
   );
 }
